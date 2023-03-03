@@ -1,5 +1,6 @@
 package com.chudnovskiy.coffeemachine;
 
+import com.chudnovskiy.coffee.Coffee;
 import com.chudnovskiy.util.Errors;
 import com.chudnovskiy.util.Status;
 
@@ -35,8 +36,23 @@ public abstract class CoffeeMachine {
         status = Status.OFF;
     }
 
-    public abstract boolean cleaningTheWasteCoffeeTank();
-    public abstract boolean makeCoffee() ;
-    public abstract void addCoffee();
-    public abstract void addWater();
+    public abstract void cleaningTheWasteCoffeeTank();
+
+    public void makeCoffee(Coffee coffee) {
+        //TODO: хватает ли мне всего для приготовления кофе
+        if (Status.ON.status && Errors.NO_ERROR.status) {
+            this.coffee -= coffee.getCoffee();
+            this.water -= coffee.getWater();
+            this.wasteTank -= coffee.getCoffee();
+            System.out.println(coffee);
+        }
+        //TODO: проверка всех индиградиентов, если чего-то закончилось - ошибка
+    }
+
+    public void addCoffee(int amountOfCoffee) {
+        coffee += amountOfCoffee;
+    }
+    public void addWater(int amountOfWater) {
+        water += amountOfWater;
+    }
 }
