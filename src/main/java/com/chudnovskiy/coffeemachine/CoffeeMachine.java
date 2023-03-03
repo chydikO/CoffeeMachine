@@ -1,18 +1,23 @@
 package com.chudnovskiy.coffeemachine;
 
 import com.chudnovskiy.util.Errors;
+import com.chudnovskiy.util.Status;
 
-public class CoffeeMachine {
+public abstract class CoffeeMachine {
+    private String name;
     private int coffee;
     private int water;
     private int wasteTank;
+    private Status status;
     private Errors error;
 
-    public CoffeeMachine(int coffee, int water, int wasteTank, Errors error) {
+    public CoffeeMachine(String name, int coffee, int water, int wasteTank) {
+        this.name = name;
         this.coffee = coffee;
         this.water = water;
         this.wasteTank = wasteTank;
-        this.error = error;
+        this.status = Status.OFF;
+        this.error = Errors.NO_ERROR;
     }
 
     public Errors getError() {
@@ -23,25 +28,15 @@ public class CoffeeMachine {
         this.error = error;
     }
 
-    public boolean on() {
-        return false;
+    public void on() {
+        status = Status.ON;
     }
-    public boolean shutdown() {
-        return false;
-    }
-    public boolean cleaningTheWasteCoffeeTank() {
-        return false;
+    public void off() {
+        status = Status.OFF;
     }
 
-    public boolean makeCoffee() {
-        return false;
-    }
-
-    public void addCoffee() {
-
-    }
-
-    public void addWater() {
-
-    }
+    public abstract boolean cleaningTheWasteCoffeeTank();
+    public abstract boolean makeCoffee() ;
+    public abstract void addCoffee();
+    public abstract void addWater();
 }
