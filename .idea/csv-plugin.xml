@@ -10,6 +10,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\git.me">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\pom.xml">
           <value>
             <Attribute>

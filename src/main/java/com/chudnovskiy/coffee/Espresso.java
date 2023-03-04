@@ -7,5 +7,10 @@ public class Espresso extends Coffee {
     }
 
     public Espresso() {
-        super(22, 30);    }
+        super(22, 30);
+    }
+    @Override
+    public String toString() {
+        return super.toString() + this.getClass().getSimpleName();
+    }
 }
