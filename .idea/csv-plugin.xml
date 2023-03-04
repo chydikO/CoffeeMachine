@@ -24,6 +24,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\src\main\java\com\chudnovskiy\App.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\src\main\java\com\chudnovskiy\CoffeMachine.java">
           <value>
             <Attribute>
@@ -45,6 +52,20 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\src\main\java\com\chudnovskiy\coffee\Cappuccino.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\src\main\java\com\chudnovskiy\coffee\CoffeWithMilk.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\src\main\java\com\chudnovskiy\coffee\Coffee.java">
           <value>
             <Attribute>
@@ -63,6 +84,13 @@
           <value>
             <Attribute>
               <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\src\main\java\com\chudnovskiy\coffeemachine\cappuccinoAndLatte.java">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
             </Attribute>
           </value>
         </entry>

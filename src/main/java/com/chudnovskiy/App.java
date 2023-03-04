@@ -1,8 +1,11 @@
 package com.chudnovskiy;
 
 import com.chudnovskiy.coffee.Americano;
+import com.chudnovskiy.coffee.Cappuccino;
 import com.chudnovskiy.coffee.Espresso;
+import com.chudnovskiy.coffee.Latte;
 import com.chudnovskiy.coffeemachine.AmericanoAndEspresso;
+import com.chudnovskiy.coffeemachine.CappuccinoAndLatte;
 import com.chudnovskiy.coffeemachine.CoffeeMachine;
 
 public class App {
@@ -36,6 +39,34 @@ public class App {
         coffeeMachineRainbow.addCoffee(50);
         coffeeMachineRainbow.makeCoffee(new Espresso());
 
-        System.out.println();
+        coffeeMachineRainbow.off();
+        coffeeMachineRainbow = null;
+
+
+
+        CoffeeMachine coffeeMilkMachine = new CappuccinoAndLatte(
+                "Tefal-2243",
+                100,
+                220,
+                120,
+                200);
+        coffeeMilkMachine.on();
+
+        coffeeMilkMachine.makeCoffee(new Latte(50));
+        System.out.println(coffeeMilkMachine);
+
+        coffeeMilkMachine.makeCoffee(new Cappuccino(60));
+        System.out.println(coffeeMilkMachine);
+
+        coffeeMilkMachine.makeCoffee(new Cappuccino(200));
+        System.out.println(coffeeMilkMachine);
+
+
+        coffeeMilkMachine.addWater(300);
+        ((CappuccinoAndLatte) coffeeMilkMachine).addMilk(200);
+        System.out.println(coffeeMilkMachine);
+
+        coffeeMilkMachine.makeCoffee(new Cappuccino(200));
+        System.out.println(coffeeMilkMachine);
     }
 }

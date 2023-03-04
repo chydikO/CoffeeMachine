@@ -4,9 +4,7 @@ public abstract class Coffee {
     private int coffee;
     private int water;
 
-    public Coffee(int coffee, int water) {
-        this.coffee = coffee;
-        this.water = water;
+    public Coffee() {
     }
 
     public int getCoffee() {

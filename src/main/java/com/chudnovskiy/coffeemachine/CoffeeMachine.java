@@ -2,10 +2,11 @@ package com.chudnovskiy.coffeemachine;
 
 import com.chudnovskiy.coffee.Coffee;
 import com.chudnovskiy.util.Errors;
+import com.chudnovskiy.util.Helper;
 import com.chudnovskiy.util.Status;
 
 public abstract class CoffeeMachine {
-    private String name;
+    private final String name;
     private int coffee;
     private int water;
     private int wasteTank;
@@ -23,19 +24,21 @@ public abstract class CoffeeMachine {
         this.error = Errors.NO_ERROR;
     }
 
-    public Errors getError() {
-        return error;
+    public void on() {
+        status = Status.ON;
+        System.out.println(status.label + "\t" + this.getClass().getSimpleName());
+    }
+    public void off() {
+        status = Status.OFF;
+        System.out.println(status.label + "\t" + this.getClass().getSimpleName());
     }
 
     public void setError(Errors error) {
         this.error = error;
     }
 
-    public void on() {
-        status = Status.ON;
-    }
-    public void off() {
-        status = Status.OFF;
+    public Errors getError() {
+        return error;
     }
 
     public boolean makeCoffee(Coffee coffee) {
@@ -46,18 +49,20 @@ public abstract class CoffeeMachine {
             this.coffee -= coffee.getCoffee();
             this.water -= coffee.getWater();
             this.wasteTank -= coffee.getCoffee();
-            System.out.print(coffee);
-            timeSleep();
+            printCoffee(coffee);
+            Helper.timeSleep();
             System.out.println("\t*-= Кофе готово =-* !!!");
             return true;
         } else {
             System.out.println("-".repeat(20));
             System.out.println(status.label);
-//            System.err.println(error.label);
             System.out.println("-".repeat(20) + "\n");
         }
-        //TODO: проверка всех индиградиентов, если чего-то закончилось - ошибка
         return false;
+    }
+
+    private void printCoffee(Coffee coffee) {
+        System.out.print(coffee);
     }
 
     private boolean restOfWasteTank(Coffee coffee) {
@@ -93,14 +98,6 @@ public abstract class CoffeeMachine {
         return true;
     }
 
-    private void timeSleep() {
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-        }
-    }
-
     public void addCoffee(int amountOfCoffee) {
         coffee += amountOfCoffee;
         if (Errors.NO_COFFEE == error) {
@@ -123,5 +120,26 @@ public abstract class CoffeeMachine {
             error = Errors.NO_ERROR;
         }
         System.out.println("очищен контейнер с отходами в аппарате:");
+    }
+
+    @Override
+    public String toString() {
+        return new StringBuilder()
+                .append("CoffeeMachine:\t")
+                .append("name=")
+                .append(name)
+                .append(" coffee=")
+                .append(coffee)
+                .append(" water=")
+                .append(water)
+                .append(" wasteTank=")
+                .append(wasteTank)
+                .append(" wasteTankWhenEmpty=")
+                .append(wasteTankWhenEmpty)
+                .append(" status=")
+                .append(status)
+                .append(" error=")
+                .append(error)
+                .toString();
     }
 }

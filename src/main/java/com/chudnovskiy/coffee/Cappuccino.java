@@ -1,9 +1,9 @@
 package com.chudnovskiy.coffee;
 
-public class Espresso extends Coffee {
-    //эспрессо – 22 г молотого кофе и 30 мл;
-    public Espresso() {
-        super();
+public class Cappuccino extends CoffeeWithMilk{
+
+    public Cappuccino(int milk) {
+        super(milk);
     }
 
     @Override
