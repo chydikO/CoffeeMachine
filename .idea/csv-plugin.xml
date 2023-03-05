@@ -80,6 +80,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\src\main\java\com\chudnovskiy\coffeemachine\AmericanoAndEspresso.java">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\src\main\java\com\chudnovskiy\coffeemachine\CoffeeMachine.java">
           <value>
             <Attribute>
