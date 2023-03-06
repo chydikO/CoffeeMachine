@@ -5,6 +5,7 @@ public enum Errors {
     NO_COFFEE("Отсутствует молотое кофе.", false),
     NO_ERROR("Ошибки отсутствуют.", true),
     TANK_FULL("Переполнен бак с отработанным кофе.", false),
+    NO_COFFEE_BEANS("Отсутвует зерновое кофе.", false),
     NO_MILK("Отсутствует молоко.", false);
 
     public final String label;

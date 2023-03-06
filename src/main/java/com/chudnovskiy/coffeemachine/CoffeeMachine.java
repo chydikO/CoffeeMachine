@@ -41,6 +41,18 @@ public abstract class CoffeeMachine {
         return error;
     }
 
+    public int getCoffee() {
+        return coffee;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
     public boolean makeCoffee(Coffee coffee) {
         //TODO: хватает ли мне всего для приготовления кофе
         if (!(restOfWasteTank(coffee) && isRemainderCoffee(coffee) && restOfTheWater(coffee))) return false;

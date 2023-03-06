@@ -73,13 +73,15 @@ public class CappuccinoAndLatte extends AmericanoAndEspresso {
 
     @Override
     public boolean makeCoffee(Coffee coffee) {
-        if (!restOfTheMilk(coffee))  return false;
+        //if (!restOfTheMilk(coffee))  return false;
         if(!super.makeCoffee(coffee)) return false;
 
         if (coffee instanceof Cappuccino) {
             makeCappuccino(coffee);
         } else if (coffee instanceof Latte) {
            makeLatte(coffee);
+        } else {
+            super.makeCoffee(coffee);
         }
         return true;
     }
