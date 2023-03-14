@@ -28,6 +28,7 @@ public abstract class CoffeeMachine {
         status = Status.ON;
         System.out.println(status.label + "\t" + this.getClass().getSimpleName());
     }
+
     public void off() {
         status = Status.OFF;
         System.out.println(status.label + "\t" + this.getClass().getSimpleName());

@@ -13,14 +13,14 @@ import com.chudnovskiy.util.Errors;
  * вить капучино и лате.
  * Добавилась встроенная емкость для молока, размер емко-
  * сти зависит от марки кофемашины.
- *
+ * <p>
  * Добавилась ошибка:
- *  ■ Отсутствует молоко.
- *
+ * ■ Отсутствует молоко.
+ * <p>
  * Добавились кнопки:
- *  ■ Приготовить лате;
- *  ■ Приготовить капучино.
- *
+ * ■ Приготовить лате;
+ * ■ Приготовить капучино.
+ * <p>
  * Количество молока, которое тратится на приготовление
  * капучино и лате, задается во время приготовления. Коли-
  * чество потребляемого кофе и воды, как при приготовлении
@@ -31,6 +31,19 @@ import com.chudnovskiy.util.Errors;
  */
 public class CappuccinoAndLatte extends AmericanoAndEspresso {
     private int milkContainer;
+    private IMakingCoffee iMakingCoffee = coffee -> {
+        //if (!restOfTheMilk(coffee)) return false;
+    if (!CappuccinoAndLatte.super.makeCoffee(coffee)) return false;
+
+    if (coffee instanceof Cappuccino) {
+        makeCappuccino(coffee);
+    } else if (coffee instanceof Latte) {
+        makeLatte(coffee);
+    } else {
+        CappuccinoAndLatte.super.makeCoffee(coffee);
+    }
+    return true;
+    };
 
     public CappuccinoAndLatte(String name, int coffee, int water, int wasteTank, int milkContainer) {
         super(name, coffee, water, wasteTank);
@@ -46,12 +59,12 @@ public class CappuccinoAndLatte extends AmericanoAndEspresso {
     }
 
     private void makeLatte(Coffee coffee) {
-        this.milkContainer -= ((Latte)coffee).getMilk();
+        this.milkContainer -= ((Latte) coffee).getMilk();
         System.out.println("Латте готово");
     }
 
     private void makeCappuccino(Coffee coffee) {
-        this.milkContainer -= ((Cappuccino)coffee).getMilk();
+        this.milkContainer -= ((Cappuccino) coffee).getMilk();
         System.out.println("Каппучино готово");
     }
 
@@ -61,7 +74,7 @@ public class CappuccinoAndLatte extends AmericanoAndEspresso {
             return false;
         }
 
-        boolean isRestOfTheMilk = this.milkContainer - ((CoffeeWithMilk)coffee).getMilk() > 0;
+        boolean isRestOfTheMilk = this.milkContainer - ((CoffeeWithMilk) coffee).getMilk() > 0;
         if (!isRestOfTheMilk) {
             setError(Errors.NO_MILK);
             System.out.println("-".repeat(20));
@@ -73,18 +86,23 @@ public class CappuccinoAndLatte extends AmericanoAndEspresso {
 
     @Override
     public boolean makeCoffee(Coffee coffee) {
-        //if (!restOfTheMilk(coffee))  return false;
-        if(!super.makeCoffee(coffee)) return false;
-
-        if (coffee instanceof Cappuccino) {
-            makeCappuccino(coffee);
-        } else if (coffee instanceof Latte) {
-           makeLatte(coffee);
-        } else {
-            super.makeCoffee(coffee);
-        }
-        return true;
+        return iMakingCoffee.makeCoffee(coffee);
     }
+
+    //    @Override
+//    public boolean makeCoffee(Coffee coffee) {
+//        //if (!restOfTheMilk(coffee)) return false;
+//        if (!super.makeCoffee(coffee)) return false;
+//
+//        if (coffee instanceof Cappuccino) {
+//            makeCappuccino(coffee);
+//        } else if (coffee instanceof Latte) {
+//            makeLatte(coffee);
+//        } else {
+//            super.makeCoffee(coffee);
+//        }
+//        return true;
+//    }
 
     @Override
     public String toString() {

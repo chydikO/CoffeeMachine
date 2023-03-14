@@ -45,42 +45,42 @@ public class App {
 //
 //
 //
-//        CoffeeMachine coffeeMilkMachine = new CappuccinoAndLatte(
-//                "Tefal-2243",
-//                100,
-//                220,
-//                120,
-//                200);
-//        coffeeMilkMachine.on();
-//
-//        coffeeMilkMachine.makeCoffee(new Latte(50));
-//        System.out.println(coffeeMilkMachine);
-//
-//        coffeeMilkMachine.makeCoffee(new Cappuccino(60));
-//        System.out.println(coffeeMilkMachine);
-//
-//        coffeeMilkMachine.makeCoffee(new Cappuccino(200));
-//        System.out.println(coffeeMilkMachine);
-//
-//
-//        coffeeMilkMachine.addWater(300);
-//        ((CappuccinoAndLatte) coffeeMilkMachine).addMilk(200);
-//        System.out.println(coffeeMilkMachine);
-//
-//        coffeeMilkMachine.makeCoffee(new Cappuccino(200));
-
-        AmericanoAndLatte americanoAndLatte = new AmericanoAndLatte(
-                "Americano And Latte",
-                50,
+        CoffeeMachine coffeeMilkMachine = new CappuccinoAndLatte(
+                "Tefal-2243",
                 100,
-                300,
-                350,
+                220,
+                120,
                 200);
-        americanoAndLatte.on();
+        coffeeMilkMachine.on();
 
-        americanoAndLatte.makeCoffee(new Latte(50));
-        americanoAndLatte.makeCoffee(new Americano());
+        coffeeMilkMachine.makeCoffee(new Latte(50));
+        System.out.println(coffeeMilkMachine);
 
-        System.out.println(americanoAndLatte);
+        coffeeMilkMachine.makeCoffee(new Cappuccino(60));
+        System.out.println(coffeeMilkMachine);
+
+        coffeeMilkMachine.makeCoffee(new Cappuccino(200));
+        System.out.println(coffeeMilkMachine);
+
+
+        coffeeMilkMachine.addWater(300);
+        ((CappuccinoAndLatte) coffeeMilkMachine).addMilk(200);
+        System.out.println(coffeeMilkMachine);
+
+        coffeeMilkMachine.makeCoffee(new Cappuccino(200));
+
+//        AmericanoAndLatte americanoAndLatte = new AmericanoAndLatte(
+//                "Americano And Latte",
+//                50,
+//                100,
+//                300,
+//                350,
+//                200);
+//        americanoAndLatte.on();
+//
+//        americanoAndLatte.makeCoffee(new Latte(50));
+//        americanoAndLatte.makeCoffee(new Americano());
+//
+//        System.out.println(americanoAndLatte);
     }
 }
